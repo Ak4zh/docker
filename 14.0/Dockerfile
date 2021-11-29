@@ -64,8 +64,8 @@ RUN curl -o odoo.deb -sSL http://nightly.odoo.com/${ODOO_VERSION}/nightly/deb/od
     && rm -rf /var/lib/apt/lists/* odoo.deb
 
 # Copy entrypoint script and Odoo configuration file
-COPY ./14.0/entrypoint.sh /
-COPY ./14.0/odoo.conf /etc/odoo/
+COPY ./${ODOO_VERSION}/entrypoint.sh /
+COPY ./${ODOO_VERSION}/odoo.conf /etc/odoo/
 COPY ./requirements.txt /
 
 RUN pip3 install -r /requirements.txt
@@ -82,7 +82,7 @@ EXPOSE 8069 8071 8072
 # Set the default config file
 ENV ODOO_RC /etc/odoo/odoo.conf
 
-COPY wait-for-psql.py /usr/local/bin/wait-for-psql.py
+COPY ${ODOO_VERSION}/wait-for-psql.py /usr/local/bin/wait-for-psql.py
 
 # Set default user when running the container
 USER odoo
