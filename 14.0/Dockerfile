@@ -68,7 +68,7 @@ COPY ./14.0/entrypoint.sh /
 COPY ./14.0/odoo.conf /etc/odoo/
 COPY ./requirements.txt /
 
-RUN pip install -r /requirements.txt
+RUN pip3 install -r /requirements.txt
 
 # Set permissions and Mount /var/lib/odoo to allow restoring filestore and /mnt/extra-addons for users addons
 RUN chown odoo /etc/odoo/odoo.conf \
