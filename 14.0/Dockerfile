@@ -64,8 +64,8 @@ RUN curl -o odoo.deb -sSL http://nightly.odoo.com/${ODOO_VERSION}/nightly/deb/od
     && rm -rf /var/lib/apt/lists/* odoo.deb
 
 # Copy entrypoint script and Odoo configuration file
-COPY ./entrypoint.sh /
-COPY ./odoo.conf /etc/odoo/
+COPY ./14.0/entrypoint.sh /
+COPY ./14.0/odoo.conf /etc/odoo/
 COPY ../requirements.txt /
 
 RUN pip install -r /requirements.txt
